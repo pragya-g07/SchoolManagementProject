@@ -1,0 +1,260 @@
+<!--?php
+include('config.php'); 
+$id=$name=$fname=$mname=$gender=$class=$previous_class=$email=$fphone=$dob=$aadhar=$marksheet="";
+$idErr=$nameErr=$fnameErr=$mnameErr=$genderErr=$classErr=$previous_classErr=$emailErr=$fphoneErr=$dobErr=$aadharErr=$marksheetErr="";
+if(isset($_POST["Submit"]))
+{
+     if(empty($_POST["Id"]))
+    {
+        $uidErr="user name is required";
+    }else
+    {
+        $uid=test_input($_POST["Id"]);
+       
+    }
+
+    if(empty($_POST["Name"]))
+    {
+        $usernameErr="user name is required";
+    }else
+    {
+        $username=test_input($_POST["Name"]);
+       
+    }
+
+    if(empty($_POST["mob"]))
+    {
+    $mobileErr="Mobile is required";
+}else
+    {
+    $mobile=test_input($_POST["mob"]);
+        
+}
+if(empty($_POST["add"]))
+    {
+    $addressErr="Address is required";
+}else
+{
+    $address=test_input($_POST["add"]);
+    
+}
+
+if(empty($_POST["mark"]))
+    {
+    $landmarkErr="Landmark is required";
+}else
+{
+    $landmark=test_input($_POST["mark"]);
+    
+}
+
+if(empty($_POST["eid"]))
+    {
+    $emailErr="email  is required";
+}else
+{
+    $email=test_input($_POST["eid"]);
+    
+}
+if(empty($_POST["paswrd"]))
+    {
+    $passwrdErr="password is required";
+}else
+{
+    $passwrd=test_input($_POST["paswrd"]);
+   
+}
+
+    if($username!="" && $mobile!="" && $address!="" && $landmark!="" && $email!="" && $passwrd!="")
+        {
+        $qry= "insert into `register`(`usrname`,`mob`,`add`,`mark`,`eid`,`paswrd`)values('$username','$mobile','$address','$landmark','$email','$passwrd')";
+            if($conn->query($qry)==true)
+       
+            {
+                echo "data inserted successfully" ;
+        header("Location:Home.php");
+        }
+    else
+    {
+        echo $conn->error;
+    }
+        }
+            else
+            {
+                echo "Field required";
+            }
+}
+?-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+	padding:0% 10% 0% 10%;
+  background-image: url('../Images/body.jpg');
+
+}
+
+* {
+  box-sizing: border-box;
+  
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=tel] ,input[type=date],select{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus,input[type=tel]:focus, select{
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color:rgb(14, 143, 46);
+  color: rgb(236, 226, 226);
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-size: large;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+.head
+{
+          background-color: rgb(3, 156, 49);
+          padding:1%;
+          text-align: center;
+          font-size: larger;
+}
+.head2
+{
+          background-color: rgb(11, 122, 39);
+          padding:1%;
+          text-align: center;
+          font-size:large;
+
+}
+</style>
+</head>
+<body>
+          <div class="head">
+                    <h1>New Talent Public H.S. School</h1>
+          </div>
+         <div class="head2">
+                   <h3>Registration Form</h3>
+                   <hr>
+                   <p>Please fill in this form to register yourself.</p>
+         </div>
+
+<form action="http://localhost/boot/Myschoolboot/connection.php" method="post">
+  <div class="container">
+    
+    
+    <hr>
+
+	 <label for="name"><b>Name of Child</b></label>
+    <input type="text" placeholder="Enter name of student" name="name" id="name" required>
+
+	 <label for="name"><b>Father's Name</b></label>
+    <input type="text" placeholder="Enter father's name" name="fname" id="fname" required>
+
+    <label for="name"><b>Mother's Name</b></label>
+    <input type="text" placeholder="Enter mother's name" name="mname" id="mname" required>
+
+	 <label for="gender"><b>Gender</b></label>
+    <select id="gender" name="gender" required>
+      <option value="Boy">Boy</option>
+      <option value="Girl">Girl</option>
+    </select><br><br>
+
+    <label for="class"><b>Class in which you are looking for admission</b><br></label>
+    <select id="class" name="class" required>
+      <option value="Nursery">Nursery</option>
+      <option value="LKG">LKG</option>
+      <option value="UKG">UKG</option>
+      <option value="First">1st</option>
+      <option value="Second">2nd</option>
+      <option value="Third">3rd</option>
+      <option value="Fourth">4th</option>
+      <option value="Fifth">5th</option>
+      <option value="Sixth">6th</option>
+      <option value="Seventh">7th</option>
+      <option value="Eighth">8th</option>
+      <option value="Ninth">9th</option>
+      <option value="Tenth">10th</option>
+      <option value="Eleventh PCM">11th PCM</option>
+      <option value="Eleventh PCB">11th PCB</option>
+      <option value="Eleventh Commerce+IP">11th Commerce+IP</option>
+      <option value="Eleventh C+M">11th Commerce+Maths</option>
+      <option value="Twelfth PCM">12th PCM</option>
+      <option value="Twelfth PCB">12th PCB</option>
+      <option value="Twelfth Commerce+IP">12th Commerce+IP</option>
+      <option value="Twelfth C+M">12th Commerce+Maths</option>
+    </select><br><br>
+
+    <label for="previous_class"><b>Last Class Attended result %</b></label>
+    <input type="text" placeholder="87" name="previous_class" id="previous_class" required>
+
+	 <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+
+    <label for="phone"><b>Contact number Father:</b></label>
+    <input type="tel" id="fphone" name="fphone" pattern="[0-9]{10}" placeholder="father's phone" required>   
+   
+   
+	<label for="DOB"><b>Date of Birth</b></label>
+    <input type="date" placeholder="dd/mm/yyyy" name="dob" id="dob" required>
+
+    <label for="Aadhar"><b>Aadhar</b></label><Br>
+    <input type="file" name="aadhar" id="aadhar" required><br><br><br>
+
+	 <label for="Marksheet"><b>Previous Class MarkSheet</b></label><Br>
+    <input type="file" name="marksheet" id="marksheet" required>
+   
+    <button type="submit" name="submit" class="registerbtn">Register</button>
+  </div>
+  
+  <div class="container signin">
+  </div>
+</form>
+
+</body>
+</html>

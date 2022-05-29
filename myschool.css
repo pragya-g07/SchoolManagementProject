@@ -1,0 +1,29 @@
+.main {
+     background-color: rgb(19, 126, 28);
+     font-family: 'Times New Roman', Times, serif;
+     text-align: left;
+     color: cornsilk;
+     padding: 1% 1% 0% 1%;
+     margin-top: 0;
+   }
+ 
+   body {
+
+     background-image: url('../Images/body.jpg');
+     background-size: 100% 100%;
+     background-repeat:repeat;
+     background-size: cover;
+ 
+   }
+ 
+   .carousel-item {
+     height: 600px;
+   }
+ 
+   .carousel-item img {
+     height: 600px;
+   }
+ 
+   .dropdown-menu {
+     background-color:light;
+   }
